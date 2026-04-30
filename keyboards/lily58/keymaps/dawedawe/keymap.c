@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      | VOL+ |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |MS_UP |      |      | VOL- |
+ * |      |      |      |      |      |      |                    |      |MSBTN1|MS_UP |MSBTN2|      | VOL- |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    ,-------|      |MS_LFT|MS_DWN|MS_RHT|      | Mute |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_ADJUST] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_AUDIO_VOL_UP,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, MS_UP, XXXXXXX, XXXXXXX, KC_AUDIO_VOL_DOWN,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, MS_BTN1, MS_UP, MS_BTN2, XXXXXXX, KC_AUDIO_VOL_DOWN,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, KC_AUDIO_MUTE,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MEDIA_PLAY_PAUSE,
                              _______, _______, _______, _______, _______,  _______, _______, _______
@@ -126,8 +126,8 @@ bool oled_task_user(void) {
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);
-    oled_write_ln(read_keylog(), false);
-    oled_write_ln(read_keylogs(), false);
+    // oled_write_ln(read_keylog(), false); // disabled for travel
+    // oled_write_ln(read_keylogs(), false); // disabled for travel
     //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
     //oled_write_ln(read_host_led_state(), false);
     //oled_write_ln(read_timelog(), false);
